@@ -1,0 +1,11 @@
+flask
+spacy
+sentence-transformers
+PyPDF2
+pdfplumber
+python-docx
+detoxify
+pandas
+numpy
+plotly
+langdetect

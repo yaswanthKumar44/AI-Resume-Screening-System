@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Resume Screening | xAI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="executive-bg">
+    <!-- Header (unchanged from previous response) -->
+    <header class="executive-header">
+        <div class="container d-flex align-items-center justify-content-between py-3">
+            <div class="d-flex align-items-center">
+               
+                <h1 class="executive-title mb-0">AI-Powered Resume Ranking</h1>
+            </div>
+           
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <div class="executive-card slide-in">
+            {% if error %}
+            <div class="alert alert-danger fade-in" role="alert">
+                {{ error }}
+            </div>
+            {% endif %}
+            <form action="/upload" method="post" enctype="multipart/form-data" id="uploadForm" onsubmit="return validateForm()">
+                <div class="mb-4">
+                    <label for="job_description_text" class="form-label executive-label">Job Description 📝</label>
+                    <textarea class="form-control executive-input" id="job_description_text" name="job_description_text" rows="5" placeholder="Enter the job description here..." oninput="checkInputs()"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="job_description_file" class="form-label executive-label">
+                        <i class="fas fa-file-upload me-2"></i>Or Upload Job Description (PDF/DOCX)
+                    </label>
+                    <div class="custom-file-input-wrapper">
+                        <input type="file" class="executive-input custom-file-input" id="job_description_file" name="job_description_file" accept=".pdf,.docx" oninput="checkInputs()">
+                        <span class="custom-file-label">Choose file...</span>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="resumes" class="form-label executive-label">
+                        <i class="fas fa-address-card me-2"></i>Upload Resumes (PDF/DOCX, up to 200)
+                    </label>
+                    <div class="custom-file-input-wrapper">
+                        <input type="file" class="executive-input custom-file-input" id="resumes" name="resumes" accept=".pdf,.docx" multiple required>
+                        <span class="custom-file-label">Choose files...</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn executive-btn w-100" id="submitButton" disabled>Process Resumes</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function checkInputs() {
+            const jobDescText = document.getElementById('job_description_text').value.trim();
+            const jobDescFile = document.getElementById('job_description_file').files.length;
+            const submitButton = document.getElementById('submitButton');
+            submitButton.disabled = !(jobDescText || jobDescFile > 0);
+        }
+
+        function validateForm() {
+            const jobDescText = document.getElementById('job_description_text').value.trim();
+            const jobDescFile = document.getElementById('job_description_file').files.length;
+            const resumes = document.getElementById('resumes').files.length;
+            if (!jobDescText && jobDescFile === 0) {
+                alert('Please provide a job description (text or file).');
+                return false;
+            }
+            if (resumes === 0) {
+                alert('Please upload at least one resume.');
+                return false;
+            }
+            return true;
+        }
+
+        // Update custom file input label when files are selected
+        document.querySelectorAll('.custom-file-input').forEach(input => {
+            input.addEventListener('change', function() {
+                const label = this.nextElementSibling;
+                if (this.files.length > 0) {
+                    label.textContent = this.files.length > 1 ? `${this.files.length} files selected` : this.files[0].name;
+                    label.classList.add('file-selected');
+                } else {
+                    label.textContent = 'Choose files...';
+                    label.classList.remove('file-selected');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
