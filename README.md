@@ -47,7 +47,7 @@ Follow these steps to set up the project locally.
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yaswanthKumar44/ai-resume-screening-system.git
+   git clone https://github.com/yaswanthKumar44/AI-Resume-Screening-System.git
    cd ai-resume-screening-system
 ````
 
