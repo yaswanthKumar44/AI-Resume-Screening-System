@@ -28,8 +28,6 @@ This tool is designed to help recruiters efficiently filter top candidates while
 
 ## 🎥 Demo
 
-![Demo GIF](https://via.placeholder.com/800x400.png?text=Resume+Screening+Demo)  
-*Replace the placeholder above with a real demo GIF or screenshot of your app in action.*
 
 ---
 
