@@ -27,8 +27,7 @@ This tool is designed to help recruiters efficiently filter top candidates while
 ---
 
 ## 🎥 Demo
-
-
+https://www.linkedin.com/posts/yaswanth-kumar-peddagamalla-91443a288_ai-nlp-resumescreening-activity-7333011214702129153-ngj8?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEXU66ABDU8KUG62xAonIZM7Pv4L0HRaOVs
 ---
 
 ## 🛠️ Installation
